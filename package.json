@@ -3,21 +3,30 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
+    "build:prod": "ng build --prod --aot",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "precache": "sw-precache --verbose --config=sw-precache-config.js",
+    "local_server": "http-server -p 8080 -c-1 dist/emergency",
+    "deploy": "firebase deploy --only hosting",
+    "release": "npm run build:prod && npm run deploy"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.0.1",
+    "@angular/cdk": "^12.2.13",
     "@angular/common": "~12.0.1",
     "@angular/compiler": "~12.0.1",
     "@angular/core": "~12.0.1",
+    "@angular/fire": "^7.3.0",
     "@angular/forms": "~12.0.1",
+    "@angular/material": "^12.2.13",
     "@angular/platform-browser": "~12.0.1",
     "@angular/platform-browser-dynamic": "~12.0.1",
     "@angular/router": "~12.0.1",
+    "@angular/service-worker": "~12.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"

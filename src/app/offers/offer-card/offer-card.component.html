@@ -1,0 +1,28 @@
+<div>
+  <mat-card class="card" *ngIf="contact">
+    <mat-card-content class="content">
+      <div class="details" (click)="cardSelect()">
+        <h2 [innerHtml]="contact.name"></h2>
+        <h3 [innerHtml]="contact.telephone"></h3>
+      </div>
+      <div class="icons">
+        <button
+          class="callBtn"
+          mat-icon-button
+          (click)="call(contact)"
+          matTooltip="Call"
+        >
+          <mat-icon [inline]="true">call</mat-icon>
+        </button>
+        <button
+          class="reportBtn"
+          mat-icon-button
+          (click)="report(contact)"
+          matTooltip="Report"
+        >
+          <mat-icon [inline]="true">report</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

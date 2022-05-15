@@ -1,0 +1,29 @@
+<div class="container">
+  <p class="sub-header">Search & Set your location</p>
+  <div class="search-section" [formGroup]="myForm">
+    <input
+      cdkFocusInitial
+      class="search-input"
+      name="citySearch"
+      type="email"
+      placeholder="City name"
+      autocomplete="off"
+      formControlName="searchControl"
+    />
+    <button
+      mat-icon-button
+      aria-label="confirm typed location"
+      (click)="setLocationWithoutSearch()"
+    >
+      <mat-icon>done</mat-icon>
+    </button>
+  </div>
+  <div>
+    <p
+      class="select"
+      *ngFor="let location of locationList"
+      [innerHTML]="location?.name!"
+      (click)="selectLocation(location?.name!)"
+    ></p>
+  </div>
+</div>

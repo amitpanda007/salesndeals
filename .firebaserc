@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "offerandsales": {
+      "hosting": {
+        "salesndeals": [
+          "offerandsales"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "offerandsales"
+  }
+}

@@ -1,0 +1,168 @@
+<div class="section">
+  <div class="search-section" *ngIf="contactListFiltered?.location">
+    <input
+      cdkFocusInitial
+      class="search-input"
+      name="contactSearch"
+      type="email"
+      placeholder="Search for contact"
+      [(ngModel)]="contactSearch"
+      autocomplete="off"
+      (ngModelChange)="contactInputChanged()"
+    />
+  </div>
+
+  <div *ngIf="contactListFiltered?.contactInfos?.centralNumbers">
+    <div (click)="collapseExpand('one')">
+      <div class="sub-header sub-header-2">
+        <p>Central Contacts</p>
+        <button
+          mat-icon-button
+          aria-label="Expand and collapse"
+          *ngIf="isExpandedOne"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          aria-label="Expand and collapse"
+          *ngIf="!isExpandedOne"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div
+      class="content"
+      [ngClass]="{
+        collapsible: !isExpandedOne,
+        collapsed: isExpandedOne
+      }"
+    >
+      <contact-card
+        *ngFor="
+          let contact of contactListFiltered?.contactInfos?.centralNumbers
+        "
+        [contact]="contact"
+      ></contact-card>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <div *ngIf="contactListFiltered?.contactInfos?.majorHelplines">
+    <div class="sub-header sub-header-2" (click)="collapseExpand('two')">
+      <p>Major Helplines</p>
+      <button
+        mat-icon-button
+        aria-label="Expand and collapse"
+        *ngIf="isExpandedTwo"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        aria-label="Expand and collapse"
+        *ngIf="!isExpandedTwo"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+    <div
+      class="content"
+      [ngClass]="{
+        collapsible: !isExpandedTwo,
+        collapsed: isExpandedTwo
+      }"
+    >
+      <contact-card
+        *ngFor="
+          let contact of contactListFiltered?.contactInfos?.majorHelplines
+        "
+        [contact]="contact"
+      ></contact-card>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <div *ngIf="contactListFiltered?.contactInfos?.userProvidedNumbers">
+    <div class="sub-header sub-header-2" (click)="collapseExpand('three')">
+      <p>User Provided Numbers</p>
+      <button
+        mat-icon-button
+        aria-label="Expand and collapse"
+        *ngIf="isExpandedThree"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        aria-label="Expand and collapse"
+        *ngIf="!isExpandedThree"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+    </div>
+    <div
+      class="content"
+      [ngClass]="{
+        collapsible: !isExpandedThree,
+        collapsed: isExpandedThree
+      }"
+    >
+      <contact-card
+        *ngFor="
+          let contact of contactListFiltered?.contactInfos?.userProvidedNumbers
+        "
+        [contact]="contact"
+      ></contact-card>
+    </div>
+  </div>
+
+  <div *ngIf="!contactList?.contactInfos && isLocationSet">
+    <mat-card class="card">
+      <mat-card-content>
+        <div class="card-top">
+          <mat-icon aria-hidden="false" aria-label="city icon" class="card-icon"
+            >location_city</mat-icon
+          >
+          <div class="card-info">
+            <h2>No data for selected city</h2>
+            <p>
+              We don't have data for your city at this moment. Send us a request
+              to add your city.
+            </p>
+            <button mat-button color="accent" (click)="requestNewCity()">
+              CITY REQUEST
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!contactList?.contactInfos && !isLocationSet">
+    <mat-card class="card">
+      <mat-card-content>
+        <div class="card-top">
+          <mat-icon aria-hidden="false" aria-label="city icon" class="card-icon"
+            >add_location</mat-icon
+          >
+          <div class="card-info">
+            <h2>Location Not Set</h2>
+            <p>
+              You have not set any location. Please "Set Location" to see
+              Emergency Contacts.
+            </p>
+            <button mat-button color="accent" (click)="setLocation()">
+              SET LOCATION
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="isLoading" class="spinner-bg">
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
+</div>
