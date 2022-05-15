@@ -11,16 +11,13 @@ import {
   addDoc,
 } from '@angular/fire/firestore';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Contact } from '../models/offer';
 import { Location } from '../models/location';
 import { NewLocation } from '../models/new-location';
 
 @Injectable()
 export class LocationService {
   public locationChanged = new BehaviorSubject('');
-
   private filterLocation: Location[] = [];
-
   private locationCol!: CollectionReference;
 
   public locationDataChanged = new Subject<Location[]>();
