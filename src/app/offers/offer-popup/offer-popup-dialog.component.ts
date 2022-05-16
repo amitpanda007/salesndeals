@@ -1,16 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ContactInfo } from 'src/app/models/offer';
+import { Offer } from 'src/app/models/offer';
 
 @Component({
-  selector: 'app-contact-popup-dialog',
-  templateUrl: './contact-popup-dialog.component.html',
-  styleUrls: ['./contact-popup-dialog.component.scss'],
+  selector: 'app-offer-popup-dialog',
+  templateUrl: './offer-popup-dialog.component.html',
+  styleUrls: ['./offer-popup-dialog.component.scss'],
 })
-export class ContactPopUpDialogComponent {
+export class OfferPopUpDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<ContactPopUpDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ContactPopUpDialogData
+    public dialogRef: MatDialogRef<OfferPopUpDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: OfferPopUpDialogData
   ) {}
 
   cancel(): void {
@@ -18,9 +18,8 @@ export class ContactPopUpDialogComponent {
   }
 }
 
-export interface ContactPopUpDialogData {
-  contact: ContactInfo;
-  timer: any;
+export interface OfferPopUpDialogData {
+  offer: Offer;
 }
 
-export interface ContactPopUpDialogResult {}
+export interface OfferPopUpDialogResult {}

@@ -1,9 +1,9 @@
-<mat-card class="card" *ngIf="data.contact">
+<mat-card class="card" *ngIf="data.offer">
   <mat-card-content class="content">
     <div class="details">
-      <h2 [innerHtml]="data.contact.name"></h2>
-      <h3 [innerHtml]="data.contact.telephone"></h3>
-      <p [innerHtml]="data.contact.description" class="desc"></p>
+      <h2 [innerHtml]="data.offer.name"></h2>
+      <h3 [innerHtml]="data.offer.description"></h3>
+      <p [innerHtml]="data.offer.offerContent" class="desc"></p>
     </div>
   </mat-card-content>
 </mat-card>

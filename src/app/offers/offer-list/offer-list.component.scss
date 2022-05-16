@@ -58,30 +58,6 @@
   padding: 0 1rem;
 }
 
-.collapsible {
-  display: flex;
-  color: #444;
-  cursor: pointer;
-  max-height: 600px;
-  overflow: auto;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out, max-height 0.2s ease-in-out;
-  transform: translate(0);
-}
-
-.active,
-.collapsible:hover {
-  background-color: #ccc;
-}
-
-.collapsed {
-  padding: 0 18px;
-  overflow: hidden;
-  transform: translate(9999px);
-  opacity: 0;
-  max-height: 0px;
-}
-
 p {
   margin: 0;
 }

@@ -8,19 +8,18 @@ import {
   addDoc,
 } from '@angular/fire/firestore';
 import { where } from '@firebase/firestore';
-import { enableIndexedDbPersistence } from 'firebase/firestore';
 import { Subject } from 'rxjs';
 import { Offer } from '../models/offer';
 
 @Injectable()
-export class ContactService {
+export class OfferService {
   private allOffers!: Offer[];
   // private offerColRef!: CollectionReference;
-  public offersChanged = new Subject<Offer>();
+  public offersChanged = new Subject<Offer[]>();
 
   constructor(private firestore: Firestore) {}
 
-  async getContactCollection(city: string) {
+  async getOfferCollection(city: string) {
     console.log(location);
     const _city = [
       this.capitalizeFirstLetter(city),
@@ -38,7 +37,7 @@ export class ContactService {
 
     if (firstDocument) {
       this.allOffers = firstDocument.data() as Offer[];
-      this.offersChanged.next(...this.allOffers);
+      this.offersChanged.next(this.allOffers);
     } else {
       this.offersChanged.next();
     }

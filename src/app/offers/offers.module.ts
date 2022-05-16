@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import { ContactCardComponent } from './contact-card/contact-card.component';
-import { ContactListComponent } from './contact-list/contact-list.component';
-import { ContactsRoutingModule } from './contacts.routing.module';
+import { OfferCardComponent } from './offer-card/offer-card.component';
+import { OfferListComponent } from './offer-list/offer-list.component';
+import { OffersRoutingModule } from './offers.routing.module';
 
 @NgModule({
   imports: [SharedModule],
-  declarations: [ContactsRoutingModule.components],
-  exports: [ContactListComponent, ContactCardComponent],
+  declarations: [OffersRoutingModule.components],
+  exports: [OfferListComponent, OfferCardComponent],
 })
-export class ContactsModule {}
+export class OffersModule {}

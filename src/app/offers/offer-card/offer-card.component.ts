@@ -1,61 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Offer } from 'src/app/models/offer';
+import { OfferService } from 'src/app/services/offer.service';
+import { OfferPopUpDialogComponent } from '../offer-popup/offer-popup-dialog.component';
 
 @Component({
   selector: 'offer-card',
   templateUrl: 'offer-card.component.html',
   styleUrls: ['offer-card.component.scss'],
 })
-export class ContactCardComponent implements OnInit {
-  @Input() contact: ContactInfo | null = null;
-  public contactNameWithNumber: string = '';
+export class OfferCardComponent implements OnInit {
+  @Input() offer: Offer | null = null;
 
-  constructor(
-    private dialog: MatDialog,
-    private contactService: ContactService
-  ) {}
+  constructor(private dialog: MatDialog, private offerService: OfferService) {}
 
-  ngOnInit(): void {
-    this.contactNameWithNumber =
-      this.contact?.name + ' ( ' + this.contact?.telephone + ' ) ';
-  }
-
-  call(contactInfo: ContactInfo) {
-    const callLink = document.createElement('a');
-    callLink.href = `tel:${contactInfo?.telephone}`;
-    callLink.click();
-  }
-
-  report(contactInfo: ContactInfo) {
-    console.log('Reporting current contact');
-    const city = window.localStorage.getItem('city');
-
-    const dialogRef = this.dialog.open(ContactReporttDialogComponent, {
-      width: '450px',
-      data: {
-        contactInfo: contactInfo,
-        city: city,
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((result: ContactReporttDialogResult) => {
-      if (!result) {
-        return;
-      }
-
-      if (result.problemText) {
-        this.contactService.reportContact(
-          result.contactDetail,
-          result.problemText
-        );
-      }
-    });
-  }
+  ngOnInit(): void {}
 
   cardSelect() {
-    const dialogRef = this.dialog.open(ContactPopUpDialogComponent, {
+    const dialogRef = this.dialog.open(OfferPopUpDialogComponent, {
       width: '450px',
       data: {
-        contact: this.contact,
+        contact: this.offer,
       },
     });
   }

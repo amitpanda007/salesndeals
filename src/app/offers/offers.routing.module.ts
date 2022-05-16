@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactCardComponent } from './contact-card/contact-card.component';
-import { ContactListComponent } from './contact-list/contact-list.component';
-import { ContactPopUpDialogComponent } from './contact-popup/contact-popup-dialog.component';
-import { ContactReporttDialogComponent } from './contact-report/contact-report-dialog.component';
+import { OfferPopUpDialogComponent } from './offer-popup/offer-popup-dialog.component';
 import { LocationRequestDialogComponent } from './location-request/location-request-dialog.component';
 import { LocationSearchDialogComponent } from './location-search/location-search-dialog.component';
+import { OfferListComponent } from './offer-list/offer-list.component';
+import { OfferCardComponent } from './offer-card/offer-card.component';
 
 const routes: Routes = [
   {
     path: 'offers',
-    component: ContactListComponent,
+    component: OfferListComponent,
   },
 ];
 
@@ -18,13 +17,12 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ContactsRoutingModule {
+export class OffersRoutingModule {
   static components = [
-    ContactListComponent,
-    ContactCardComponent,
+    OfferListComponent,
+    OfferCardComponent,
     LocationSearchDialogComponent,
     LocationRequestDialogComponent,
-    ContactReporttDialogComponent,
-    ContactPopUpDialogComponent,
+    OfferPopUpDialogComponent,
   ];
 }

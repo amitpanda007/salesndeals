@@ -51,16 +51,6 @@ export class LocationSearchDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  // cityInputChanged() {
-  //   // console.log(this.citySearch);
-  //   const term = this.citySearch.trim();
-  //   if (term.length > 2) {
-  //     setTimeout(() => {
-  //       this.locationService.getCityByName(term.toLocaleLowerCase());
-  //     }, 600);
-  //   }
-  // }
-
   selectLocation(cityName: string): void {
     console.log(cityName);
     this.dialogRef.close({ selectedCity: cityName });
