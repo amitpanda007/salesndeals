@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "precache": "sw-precache --verbose --config=sw-precache-config.js",
-    "local_server": "http-server -p 8080 -c-1 dist/emergency",
+    "local_server": "http-server -p 8080 -c-1 dist/salesndeals",
     "deploy": "firebase deploy --only hosting",
     "release": "npm run build:prod && npm run deploy"
   },
