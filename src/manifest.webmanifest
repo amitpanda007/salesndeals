@@ -1,6 +1,6 @@
 {
-  "name": "salesndeals",
-  "short_name": "salesndeals",
+  "name": "SalesNdeals - Get all local offers",
+  "short_name": "SalesNdeals",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
