@@ -33,12 +33,15 @@ export class OfferService {
     );
 
     const querySnapshot = await getDocs(q);
-    const firstDocument = querySnapshot.docs[0];
 
-    if (firstDocument) {
-      this.allOffers = firstDocument.data() as Offer[];
+    if(querySnapshot.docs && querySnapshot.docs.length > 0) {
+      const offers: any = [];
+      querySnapshot.docs.forEach(doc => {
+        offers.push(doc.data() as Offer);
+      });
+      this.allOffers = offers;
       this.offersChanged.next(this.allOffers);
-    } else {
+    }else {
       this.offersChanged.next();
     }
   }
