@@ -2,7 +2,8 @@ export interface Offer {
   name: string;
   description: string;
   offerContent: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: any;
+  endDate: any;
   city: string;
+  isVerified: boolean;
 }

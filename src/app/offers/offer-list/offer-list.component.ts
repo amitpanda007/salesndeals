@@ -52,6 +52,7 @@ export class OfferListComponent implements OnInit {
       this.offerService.getOfferCollection(currentCity);
     }
     this.offerService.offersChanged.subscribe((offers) => {
+      console.log(offers);
       this.offerList = offers;
       if (offers) {
         this.offerListFiltered = JSON.parse(JSON.stringify(offers));

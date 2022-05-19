@@ -1,10 +1,19 @@
-<div>
+<div (click)="cardSelect()">
   <mat-card class="card" *ngIf="offer">
     <mat-card-content class="content">
-      <div class="details" (click)="cardSelect()">
+      <div class="details">
         <h2 [innerHtml]="offer.name"></h2>
         <h3 [innerHtml]="offer.description"></h3>
+        <p *ngIf="offer.startDate" class="date"
+          >Starts - 
+          {{ offerStartDate }}</p
+        >
       </div>
     </mat-card-content>
+    <mat-card-footer class="card-footer">
+      <mat-icon aria-hidden="false" aria-label="Verified Offer" class="verified" matTooltip="verified offer"
+        >verified</mat-icon
+      >
+    </mat-card-footer>
   </mat-card>
 </div>

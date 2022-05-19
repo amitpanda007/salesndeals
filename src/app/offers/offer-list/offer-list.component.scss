@@ -40,6 +40,11 @@
   top: 50%;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
 .sub-header {
   display: flex;
   align-items: center;
@@ -71,7 +76,7 @@ p {
 }
 
 .card-icon {
-  color: blue;
+  color: #5bff00;
   height: 60px;
   width: 60px;
   font-size: 60px;
