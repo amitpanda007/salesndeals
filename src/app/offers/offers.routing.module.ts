@@ -8,7 +8,7 @@ import { OfferCardComponent } from './offer-card/offer-card.component';
 
 const routes: Routes = [
   {
-    path: 'offers',
+    path: '',
     component: OfferListComponent,
   },
 ];

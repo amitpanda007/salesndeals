@@ -6,4 +6,5 @@ export interface Offer {
   endDate: any;
   city: string;
   isVerified: boolean;
+  backgroundImage: string;
 }

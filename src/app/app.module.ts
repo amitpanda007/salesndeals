@@ -20,6 +20,7 @@ import { OfferService } from './services/offer.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { OffersModule } from './offers/offers.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { OffersModule } from './offers/offers.module';
     HttpClientModule,
     SharedModule,
     OffersModule,
+    AdminModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

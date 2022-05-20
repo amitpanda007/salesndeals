@@ -1,0 +1,34 @@
+<mat-form-field appearance="fill">
+  <mat-label>Name</mat-label>
+  <input matInput />
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Description</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Offer Content</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>City</mat-label>
+  <input matInput />
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Offer Start date</mat-label>
+  <input matInput [matDatepicker]="pickerStart" />
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+  <mat-datepicker #pickerStart></mat-datepicker>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Offer End date</mat-label>
+  <input matInput [matDatepicker]="pickerEnd" />
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+  <mat-datepicker #pickerEnd></mat-datepicker>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Background Image</mat-label>
+  <input type="file" (change)="fileChanged($event)" accept=".png,.jpg" />
+</mat-form-field>

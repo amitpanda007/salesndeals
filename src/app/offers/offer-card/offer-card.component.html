@@ -1,5 +1,5 @@
-<div (click)="cardSelect()">
-  <mat-card class="card" *ngIf="offer">
+<div (click)="cardSelect()" *ngIf="offer">
+  <mat-card class="card" [style.background-image]="offer.backgroundImage ? cardImage : ''" [style.background-size]="'cover'">
     <mat-card-content class="content">
       <div class="details">
         <h2 [innerHtml]="offer.name"></h2>

@@ -5,7 +5,7 @@ import { OfferListComponent } from './offer-list/offer-list.component';
 import { OffersRoutingModule } from './offers.routing.module';
 
 @NgModule({
-  imports: [SharedModule],
+  imports: [SharedModule, OffersRoutingModule],
   declarations: [OffersRoutingModule.components],
   exports: [OfferListComponent, OfferCardComponent],
 })
