@@ -1,17 +1,30 @@
 <div (click)="cardSelect()" *ngIf="offer">
-  <mat-card class="card" [style.background-image]="offer.backgroundImage ? cardImage : ''" [style.background-size]="'cover'">
+  <mat-card
+    class="card"
+    [style.background-image]="offer.backgroundImage ? cardImage : ''"
+    [style.background-size]="'cover'"
+  >
     <mat-card-content class="content">
       <div class="details">
+        <div class="preview">
+          <p>This is a preview offer card</p>
+        </div>
         <h2 [innerHtml]="offer.name"></h2>
         <h3 [innerHtml]="offer.description"></h3>
-        <p *ngIf="offer.startDate" class="date"
-          >Starts - 
-          {{ offerStartDate }}</p
-        >
+        <div class="date">
+          <p *ngIf="offer.startDate" class="date">Starts - {{ offerStartDate }}</p>
+          -
+          <p *ngIf="offer.endDate" class="date">Ends - {{ offerEndDate }}</p>
+        </div>
       </div>
     </mat-card-content>
     <mat-card-footer class="card-footer">
-      <mat-icon aria-hidden="false" aria-label="Verified Offer" class="verified" matTooltip="verified offer"
+      <mat-icon
+        *ngIf="options.isVerified"
+        aria-hidden="false"
+        aria-label="verified Offer"
+        class="verified"
+        matTooltip="verified offer"
         >verified</mat-icon
       >
     </mat-card-footer>

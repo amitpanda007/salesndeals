@@ -5,6 +5,6 @@ export interface Offer {
   startDate: any;
   endDate: any;
   city: string;
-  isVerified: boolean;
-  backgroundImage: string;
+  isVerified?: boolean;
+  backgroundImage?: string;
 }
