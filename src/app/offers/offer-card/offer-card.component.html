@@ -1,12 +1,12 @@
 <div (click)="cardSelect()" *ngIf="offer">
   <mat-card
     class="card"
-    [style.background-image]="offer.backgroundImage ? cardImage : ''"
+    [ngStyle]="{ 'background-image': 'url(' + cardImage + ')'}"
     [style.background-size]="'cover'"
   >
     <mat-card-content class="content">
       <div class="details">
-        <div class="preview">
+        <div class="preview"*ngIf="options.isPreview" >
           <p>This is a preview offer card</p>
         </div>
         <h2 [innerHtml]="offer.name"></h2>

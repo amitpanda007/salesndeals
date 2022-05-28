@@ -7,7 +7,7 @@ import { Offer } from 'src/app/models/offer';
   templateUrl: './offer-popup-dialog.component.html',
   styleUrls: ['./offer-popup-dialog.component.scss'],
 })
-export class OfferPopUpDialogComponent implements OnInit{
+export class OfferPopUpDialogComponent implements OnInit {
   offerStartDate!: string;
   offerEndDate!: string;
 
@@ -17,8 +17,22 @@ export class OfferPopUpDialogComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.offerStartDate = new Date(this.data.offer?.startDate.seconds*1000).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
-    this.offerEndDate = new Date(this.data.offer?.endDate.seconds*1000).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+    if (this.data.offer?.startDate.seconds) {
+      this.offerStartDate = new Date(
+        this.data.offer?.startDate.seconds * 1000
+      ).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+      this.offerEndDate = new Date(
+        this.data.offer?.endDate.seconds * 1000
+      ).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+    } else {
+      this.offerStartDate = new Date(
+        this.data.offer?.startDate
+      ).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+      this.offerEndDate = new Date(this.data.offer?.endDate).toLocaleDateString(
+        'en-US',
+        { month: 'long', day: 'numeric' }
+      );
+    }
   }
 
   cancel(): void {

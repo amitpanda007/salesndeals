@@ -19,9 +19,10 @@ import { OfferPopUpDialogComponent } from '../offer-popup/offer-popup-dialog.com
 export class OfferCardComponent implements OnInit {
   @Input() offer: Offer | null = null;
   @Input() options: any = {};
+  @Input() bgImage: any;
   offerStartDate!: string;
   offerEndDate!: string;
-  cardImage!: string;
+  cardImage: string = '';
   @ViewChild('cardRef', { read: ElementRef, static: true })
   cardRef!: ElementRef; // gets #target1
 
@@ -47,7 +48,7 @@ export class OfferCardComponent implements OnInit {
     }
 
     if (this.offer && this.offer.backgroundImage) {
-      this.cardImage = `url(${this.offer.backgroundImage})`;
+      this.cardImage = this.offer.backgroundImage;
     }
 
     this.options.isVerified = this.offer?.isVerified;
@@ -56,14 +57,21 @@ export class OfferCardComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.offer) {
       let newOffer = changes.offer.currentValue;
-      this.offerStartDate = new Date(
-        newOffer.startDate
-      ).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-      this.offerEndDate = new Date(
-        newOffer.startDate
-      ).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+      this.offerStartDate = new Date(newOffer.startDate).toLocaleDateString(
+        'en-US',
+        { month: 'long', day: 'numeric' }
+      );
+      this.offerEndDate = new Date(newOffer.startDate).toLocaleDateString(
+        'en-US',
+        { month: 'long', day: 'numeric' }
+      );
+    }
 
-      this.cardImage = `url(${newOffer.backgroundImage})`;
+    if (changes.bgImage) {
+      if (changes.bgImage.currentValue !== undefined) {
+        this.cardImage = changes.bgImage.currentValue;
+        // console.log(this.cardImage);
+      }
     }
   }
 

@@ -4,7 +4,7 @@ export interface Offer {
   offerContent: string;
   startDate: any;
   endDate: any;
-  city: string;
+  city: string[];
   isVerified?: boolean;
-  backgroundImage?: string;
+  backgroundImage?: any;
 }

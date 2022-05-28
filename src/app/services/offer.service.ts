@@ -7,6 +7,7 @@ import {
   query,
   addDoc,
 } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { where } from '@firebase/firestore';
 import { Subject } from 'rxjs';
 import { Offer } from '../models/offer';
@@ -17,7 +18,7 @@ export class OfferService {
   // private offerColRef!: CollectionReference;
   public offersChanged = new Subject<Offer[]>();
 
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private storage: AngularFireStorage) {}
 
   async getOfferCollection(city: string) {
     console.log(location);
@@ -49,4 +50,22 @@ export class OfferService {
   capitalizeFirstLetter(text: string) {
     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
   }
+
+  async addOffer(offer: Offer, file: any) {
+    console.log(offer);
+
+    if(file) {
+      const fileName = file.name;
+      const storageRef = this.storage.ref("banners");
+      const fileRef = storageRef.child(fileName);
+      const uploadTaskSnapshot = await fileRef.put(file);
+      const downloadURL = await uploadTaskSnapshot.ref.getDownloadURL();
+      console.log(downloadURL);
+      offer.backgroundImage = downloadURL;
+    }
+    const offerColRef = collection(this.firestore, 'offers');
+    addDoc(offerColRef, offer);
+  }
+
+
 }

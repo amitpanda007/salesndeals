@@ -1,7 +1,7 @@
 <h2>Add An Offer</h2>
 
 <div class="preview">
-  <offer-card [offer]="offer" [options]="offerCardOptions"></offer-card>
+  <offer-card [offer]="offer" [options]="offerCardOptions" [bgImage]="offerBgImage"></offer-card>
 </div>
 
 <div class="form-container">
@@ -55,16 +55,15 @@
         <mat-datepicker #pickerEnd></mat-datepicker>
       </mat-form-field>
     </div>
-    <div class="bg-img">
-      <mat-label>Background: </mat-label>
-      <input
-        type="file"
-        (change)="fileChanged($event)"
-        accept=".png,.jpg"
-        formControlName="backgroundImage"
-      />
-    </div>
   </form>
+  <div class="bg-img">
+    <mat-label>Background: </mat-label>
+    <input
+      type="file"
+      (change)="fileChanged($event)"
+      accept=".png,.jpg"
+    />
+  </div>
 </div>
 <div class="submit">
   <button

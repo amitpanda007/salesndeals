@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { AngularFireModule } from '@angular/fire/compat';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import {
   getAnalytics,
@@ -14,6 +15,7 @@ import {
   ScreenTrackingService,
   UserTrackingService,
 } from '@angular/fire/analytics';
+import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { GeolocationService } from './services/geolocation.service';
 import { LocationService } from './services/location.service';
 import { OfferService } from './services/offer.service';
@@ -41,14 +43,15 @@ import { AdminModule } from './admin/admin.module';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
     GeolocationService,
     ScreenTrackingService,
     UserTrackingService,
     OfferService,
-    LocationService,
+    LocationService
   ],
   bootstrap: [AppComponent]
 })
