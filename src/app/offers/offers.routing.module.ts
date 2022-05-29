@@ -5,6 +5,7 @@ import { LocationRequestDialogComponent } from './location-request/location-requ
 import { LocationSearchDialogComponent } from './location-search/location-search-dialog.component';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { OfferCardComponent } from './offer-card/offer-card.component';
+import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 
 const routes: Routes = [
   {

@@ -8,14 +8,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AuthModule } from '@angular/fire/auth';
+import { AuthModule, provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import {
-  getAnalytics,
-  provideAnalytics,
-  ScreenTrackingService,
-  UserTrackingService,
-} from '@angular/fire/analytics';
+import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { OffersModule } from './offers/offers.module';
@@ -45,8 +40,9 @@ import { MyAuthModule } from './auth/auth.module';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
+    provideAuth(() => getAuth()),
   ],
-  providers: [ScreenTrackingService, UserTrackingService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

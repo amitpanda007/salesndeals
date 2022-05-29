@@ -112,13 +112,7 @@
         },
         "deploy": {
           "builder": "@angular/fire:deploy",
-          "options": {
-            "prerender": false,
-            "ssr": false,
-            "browserTarget": "salesndeals:build:production",
-            "firebaseProject": "offerandsales",
-            "firebaseHostingSite": "offerandsales"
-          }
+          "options": {}
         }
       }
     }
