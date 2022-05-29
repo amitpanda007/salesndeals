@@ -1,26 +1,30 @@
 .locationBtn {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 .container {
-    margin: 6rem 1rem 0 1rem;
+  margin: 6rem 1rem 0 1rem;
 }
 
 .offline-top {
-    display: flex;   
+  display: flex;
 }
 
 .offline-icon {
-    color: blue;
-    height: 60px;
-    width: 60px;
-    font-size: 60px;
+  color: blue;
+  height: 60px;
+  width: 60px;
+  font-size: 60px;
 }
 
 .offline-info {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .offline-info button {
-    float: right;
+  float: right;
+}
+
+.userInfo {
+  margin-right: 1rem;
 }

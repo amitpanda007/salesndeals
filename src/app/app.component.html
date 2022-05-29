@@ -137,6 +137,24 @@
       </button>
     </mat-chip>
   </mat-chip-list>
+  <div *ngIf="auth.user | async as user" class="userInfo">
+    <!-- <span>Welcome, {{ user.displayName }}</span>
+    <a *ngIf="authService.loggedIn$ | async" (click)="authService.logout()"
+      ><span>Logout</span></a
+    > -->
+    <button mat-button [matMenuTriggerFor]="menu">
+      Welcome, {{ user.displayName }}
+    </button>
+    <mat-menu #menu="matMenu">
+      <button
+        mat-menu-item
+        *ngIf="authService.loggedIn$ | async"
+        (click)="authService.logout()"
+      >
+        Logout
+      </button>
+    </mat-menu>
+  </div>
 </div>
 
 <div class="container">

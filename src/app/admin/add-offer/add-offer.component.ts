@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Offer } from 'src/app/models/offer';
-import { OfferService } from 'src/app/services/offer.service';
+import { OfferService } from 'src/app/core/services/offer.service';
 
 @Component({
   selector: 'add-offer',

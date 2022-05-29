@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Offer } from 'src/app/models/offer';
-import { OfferService } from 'src/app/services/offer.service';
+import { OfferService } from 'src/app/core/services/offer.service';
 import { OfferPopUpDialogComponent } from '../offer-popup/offer-popup-dialog.component';
 
 @Component({

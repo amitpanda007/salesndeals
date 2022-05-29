@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { Location } from 'src/app/models/location';
-import { LocationService } from 'src/app/services/location.service';
+import { LocationService } from 'src/app/core/services/location.service';
 
 @Component({
   selector: 'app-location-search-dialog',
@@ -57,7 +57,9 @@ export class LocationSearchDialogComponent implements OnInit {
   }
 
   setLocationWithoutSearch() {
-    this.dialogRef.close({ selectedCity: this.myForm.controls['searchControl'].value });
+    this.dialogRef.close({
+      selectedCity: this.myForm.controls['searchControl'].value,
+    });
   }
 }
 

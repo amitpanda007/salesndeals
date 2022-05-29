@@ -8,9 +8,9 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { Offer } from 'src/app/models/offer';
 import { NewLocation } from 'src/app/models/new-location';
-import { OfferService } from 'src/app/services/offer.service';
-import { GeolocationService } from 'src/app/services/geolocation.service';
-import { LocationService } from 'src/app/services/location.service';
+import { OfferService } from 'src/app/core/services/offer.service';
+import { GeolocationService } from 'src/app/core/services/geolocation.service';
+import { LocationService } from 'src/app/core/services/location.service';
 import {
   LocationRequestDialogComponent,
   LocationRequestDialogResult,
@@ -27,7 +27,7 @@ export class OfferListComponent implements OnInit {
 
   public isLoading: boolean = false;
   public offerList!: Offer[];
-  public offerListFiltered!: Offer[]
+  public offerListFiltered!: Offer[];
   public isLocationSet: boolean = false;
   public isLocationSearch: boolean = false;
 
@@ -94,16 +94,11 @@ export class OfferListComponent implements OnInit {
   offerInputChanged() {
     console.log(this.offerSearch);
     if (this.offerSearch) {
-      this.offerListFiltered =
-        this.offerList.filter(
-          (offer: Offer) => {
-            return (
-              offer.name
-                .toLowerCase()
-                .indexOf(this.offerSearch.toLowerCase()) > -1
-            );
-          }
+      this.offerListFiltered = this.offerList.filter((offer: Offer) => {
+        return (
+          offer.name.toLowerCase().indexOf(this.offerSearch.toLowerCase()) > -1
         );
+      });
     } else {
       this.offerListFiltered = this.offerList;
     }

@@ -11,8 +11,8 @@ import {
   addDoc,
 } from '@angular/fire/firestore';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Location } from '../models/location';
-import { NewLocation } from '../models/new-location';
+import { Location } from 'src/app/models/location';
+import { NewLocation } from 'src/app/models/new-location';
 
 @Injectable()
 export class LocationService {

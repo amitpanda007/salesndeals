@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from './models/location';
-import { LocationService } from './services/location.service';
+import { LocationService } from './core/services/location.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LocationSearchDialogComponent } from './offers/location-search/location-search-dialog.component';
-import { OfferService } from './services/offer.service';
+import { OfferService } from './core/services/offer.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +24,9 @@ export class AppComponent {
     private _snackBar: MatSnackBar,
     private dialog: MatDialog,
     private locationService: LocationService,
-    private offerService: OfferService
+    private offerService: OfferService,
+    public authService: AuthService,
+    public auth: AngularFireAuth
   ) {}
 
   ngOnInit() {

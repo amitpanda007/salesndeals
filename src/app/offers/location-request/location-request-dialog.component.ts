@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { Location } from 'src/app/models/location';
 import { NewLocation } from 'src/app/models/new-location';
-import { LocationService } from 'src/app/services/location.service';
+import { LocationService } from 'src/app/core/services/location.service';
 
 @Component({
   selector: 'app-location-request-dialog',

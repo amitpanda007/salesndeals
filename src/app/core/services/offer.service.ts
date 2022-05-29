@@ -10,7 +10,7 @@ import {
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { where } from '@firebase/firestore';
 import { Subject } from 'rxjs';
-import { Offer } from '../models/offer';
+import { Offer } from 'src/app/models/offer';
 
 @Injectable()
 export class OfferService {
@@ -18,7 +18,10 @@ export class OfferService {
   // private offerColRef!: CollectionReference;
   public offersChanged = new Subject<Offer[]>();
 
-  constructor(private firestore: Firestore, private storage: AngularFireStorage) {}
+  constructor(
+    private firestore: Firestore,
+    private storage: AngularFireStorage
+  ) {}
 
   async getOfferCollection(city: string) {
     console.log(location);
@@ -35,14 +38,14 @@ export class OfferService {
 
     const querySnapshot = await getDocs(q);
 
-    if(querySnapshot.docs && querySnapshot.docs.length > 0) {
+    if (querySnapshot.docs && querySnapshot.docs.length > 0) {
       const offers: any = [];
-      querySnapshot.docs.forEach(doc => {
+      querySnapshot.docs.forEach((doc) => {
         offers.push(doc.data() as Offer);
       });
       this.allOffers = offers;
       this.offersChanged.next(this.allOffers);
-    }else {
+    } else {
       this.offersChanged.next();
     }
   }
@@ -54,9 +57,9 @@ export class OfferService {
   async addOffer(offer: Offer, file: any) {
     console.log(offer);
 
-    if(file) {
+    if (file) {
       const fileName = file.name;
-      const storageRef = this.storage.ref("banners");
+      const storageRef = this.storage.ref('banners');
       const fileRef = storageRef.child(fileName);
       const uploadTaskSnapshot = await fileRef.put(file);
       const downloadURL = await uploadTaskSnapshot.ref.getDownloadURL();
@@ -66,6 +69,4 @@ export class OfferService {
     const offerColRef = collection(this.firestore, 'offers');
     addDoc(offerColRef, offer);
   }
-
-
 }
