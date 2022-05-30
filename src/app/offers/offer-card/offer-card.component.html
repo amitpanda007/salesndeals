@@ -1,32 +1,59 @@
-<div (click)="cardSelect()" *ngIf="offer">
+<div *ngIf="offer">
   <mat-card
     class="card"
-    [ngStyle]="{ 'background-image': 'url(' + cardImage + ')'}"
+    [ngStyle]="{ 'background-image': 'url(' + cardImage + ')' }"
     [style.background-size]="'cover'"
   >
     <mat-card-content class="content">
       <div class="details">
-        <div class="preview"*ngIf="options.isPreview" >
-          <p>This is a preview offer card</p>
+        <div class="card-details">
+          <div class="preview" *ngIf="options.isPreview">
+            <p>This is a preview offer card</p>
+          </div>
+          <h2 [innerHtml]="offer.name"></h2>
+          <h3 [innerHtml]="offer.description"></h3>
+          <div class="date">
+            <p *ngIf="offer.startDate" class="date">
+              Starts - {{ offerStartDate }}
+            </p>
+            -
+            <p *ngIf="offer.endDate" class="date">Ends - {{ offerEndDate }}</p>
+          </div>
         </div>
-        <h2 [innerHtml]="offer.name"></h2>
-        <h3 [innerHtml]="offer.description"></h3>
-        <div class="date">
-          <p *ngIf="offer.startDate" class="date">Starts - {{ offerStartDate }}</p>
-          -
-          <p *ngIf="offer.endDate" class="date">Ends - {{ offerEndDate }}</p>
+        <div class="card-actions">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="expand offer"
+            matTooltip="expand offer"
+            (click)="cardSelect()"
+            >open_in_full</mat-icon
+          >
+          <mat-icon
+            *ngIf="options.isEdit"
+            aria-hidden="false"
+            aria-label="edit offer"
+            matTooltip="edit offer"
+            (click)="editOffer()"
+            >edit</mat-icon
+          >
+          <mat-icon
+            *ngIf="options.isDelete"
+            aria-hidden="false"
+            aria-label="delete offer"
+            matTooltip="delete offer"
+            (click)="deleteOffer()"
+            >delete</mat-icon
+          >
+          <mat-icon
+            *ngIf="options.isVerified"
+            aria-hidden="false"
+            aria-label="verified Offer"
+            class="verified"
+            matTooltip="verified offer"
+            >verified</mat-icon
+          >
         </div>
       </div>
     </mat-card-content>
-    <mat-card-footer class="card-footer">
-      <mat-icon
-        *ngIf="options.isVerified"
-        aria-hidden="false"
-        aria-label="verified Offer"
-        class="verified"
-        matTooltip="verified offer"
-        >verified</mat-icon
-      >
-    </mat-card-footer>
   </mat-card>
 </div>

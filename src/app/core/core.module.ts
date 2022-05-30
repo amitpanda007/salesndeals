@@ -11,6 +11,7 @@ import { LocationService } from './services/location.service';
 import { OfferService } from './services/offer.service';
 import { GeolocationService } from './services/geolocation.service';
 import { ValidatorService } from './services/validator.service';
+import { AdminOfferService } from './services/admin.service';
 
 @NgModule({
   imports: [CommonModule, SharedModule],
@@ -22,6 +23,7 @@ import { ValidatorService } from './services/validator.service';
     OfferService,
     LocationService,
     ValidatorService,
+    AdminOfferService,
     MatSnackBarModule,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],

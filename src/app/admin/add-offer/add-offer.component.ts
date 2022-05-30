@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Offer } from 'src/app/models/offer';
-import { OfferService } from 'src/app/core/services/offer.service';
+import { AdminOfferService } from 'src/app/core/services/admin.service';
 
 @Component({
   selector: 'add-offer',
@@ -44,7 +44,7 @@ export class AddOfferComponent implements OnInit {
     };
   }
 
-  constructor(private offerService: OfferService) {}
+  constructor(private adminOfferService: AdminOfferService) {}
 
   ngOnInit(): void {
     this.offer = {
@@ -103,6 +103,6 @@ export class AddOfferComponent implements OnInit {
 
     console.log(newOffer);
     console.log(this.fileToUpload);
-    this.offerService.addOffer(newOffer, this.fileToUpload);
+    this.adminOfferService.addOffer(newOffer, this.fileToUpload);
   }
 }

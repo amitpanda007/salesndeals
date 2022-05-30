@@ -85,4 +85,12 @@ export class OfferCardComponent implements OnInit {
       },
     });
   }
+
+  editOffer() {
+    console.log("Edit Offer");
+  }
+
+  deleteOffer() {
+    console.log("Delete Offer");
+  }
 }

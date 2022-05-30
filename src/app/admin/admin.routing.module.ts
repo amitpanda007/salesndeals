@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddOfferComponent } from './add-offer/add-offer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: AdminDashboardComponent },
   { path: 'add', component: AddOfferComponent },
 ];
 
@@ -13,5 +13,5 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AdminRoutingModule {
-  static components = [AddOfferComponent, DashboardComponent];
+  static components = [AddOfferComponent, AdminDashboardComponent];
 }

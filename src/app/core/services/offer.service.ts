@@ -53,20 +53,4 @@ export class OfferService {
   capitalizeFirstLetter(text: string) {
     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
   }
-
-  async addOffer(offer: Offer, file: any) {
-    console.log(offer);
-
-    if (file) {
-      const fileName = file.name;
-      const storageRef = this.storage.ref('banners');
-      const fileRef = storageRef.child(fileName);
-      const uploadTaskSnapshot = await fileRef.put(file);
-      const downloadURL = await uploadTaskSnapshot.ref.getDownloadURL();
-      console.log(downloadURL);
-      offer.backgroundImage = downloadURL;
-    }
-    const offerColRef = collection(this.firestore, 'offers');
-    addDoc(offerColRef, offer);
-  }
 }

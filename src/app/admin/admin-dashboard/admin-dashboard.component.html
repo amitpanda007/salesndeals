@@ -1,0 +1,9 @@
+<h2>Admin Dashboard</h2>
+
+<div class="content">
+  <offer-card
+    *ngFor="let offer of adminOfferList"
+    [offer]="offer"
+    [options]="cardOptions"
+  ></offer-card>
+</div>

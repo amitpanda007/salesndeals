@@ -5,6 +5,12 @@
   padding: 10px 6px;
 }
 
+.details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .content {
   display: flex;
   justify-content: space-between;
@@ -86,4 +92,10 @@ h3 {
   font-weight: 500;
   color: black;
   margin: 4px 0 0 0;
+}
+
+.card-actions{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
 }
