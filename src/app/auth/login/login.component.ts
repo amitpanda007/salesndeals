@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -9,16 +9,29 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['login.compoennt.scss'],
 })
 export class LoginComponent implements OnInit {
-  public loginForm;
+  public loginForm!: FormGroup;
 
-  constructor(fb: FormBuilder, private authService: AuthService) {
-    this.loginForm = fb.group({
-      email: '',
-      password: '',
+  emailControl!: FormControl;
+  passwordControl!: FormControl;
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+
+    this.emailControl = new FormControl('', [
+      Validators.required,
+      Validators.email,
+    ]),
+    this.passwordControl = new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+
+    this.loginForm = new FormGroup({
+      email: this.emailControl,
+      password: this.passwordControl
     });
   }
-
-  ngOnInit(): void {}
 
   login() {
     console.log(this.loginForm.value);

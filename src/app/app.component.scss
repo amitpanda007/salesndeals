@@ -28,3 +28,9 @@
 .userInfo {
   margin-right: 1rem;
 }
+
+.header-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}

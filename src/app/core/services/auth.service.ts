@@ -20,7 +20,6 @@ export class AuthService {
     private auth: AngularFireAuth
   ) {
     this.auth.onAuthStateChanged((user) => {
-      console.log(user);
       if (user) {
         this.loggedIn.next(true);
       } else {

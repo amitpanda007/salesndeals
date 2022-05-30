@@ -1,6 +1,7 @@
 .login-div {
   margin: 0 auto;
-  width: 330px;
+  // width: 330px;
+  max-width: 330px;
   padding: 20px 35px 35px 35px;
   border-radius: 40px;
   background: #ecf0f3;
@@ -69,6 +70,10 @@
 
 .signin-button:active {
   background: #1da88a;
+}
+
+.signin-button:disabled {
+  background: gray;
 }
 
 .link {

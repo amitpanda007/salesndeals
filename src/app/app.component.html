@@ -38,6 +38,7 @@
     right: 0;
     height: 80px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: #c8c7c7;
     color: white;
@@ -122,38 +123,40 @@
   <a href="/">
     <img width="40" alt="Angular Logo" src="../assets/images/logo.png" />
   </a>
-  <!-- <span class="header">Emergency</span> -->
-  <div class="spacer"></div>
 
-  <mat-chip-list aria-label="Location Selection" class="locationBtn">
-    <mat-chip
-      color="primary"
-      selected
-      (click)="chnageLocation()"
-      (removed)="removeLocation()"
-      >{{ currentLocation }}
-      <button matChipRemove *ngIf="currentLocation != 'Set Location'">
-        <mat-icon>cancel</mat-icon>
-      </button>
-    </mat-chip>
-  </mat-chip-list>
-  <div *ngIf="auth.user | async as user" class="userInfo">
-    <!-- <span>Welcome, {{ user.displayName }}</span>
+  <!-- <div class="spacer"></div> -->
+
+  <div class="header-info">
+    <mat-chip-list aria-label="Location Selection" class="locationBtn">
+      <mat-chip
+        color="primary"
+        selected
+        (click)="chnageLocation()"
+        (removed)="removeLocation()"
+        >{{ currentLocation }}
+        <button matChipRemove *ngIf="currentLocation != 'Set Location'">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-list>
+    <div *ngIf="auth.user | async as user" class="userInfo">
+      <!-- <span>Welcome, {{ user.displayName }}</span>
     <a *ngIf="authService.loggedIn$ | async" (click)="authService.logout()"
       ><span>Logout</span></a
     > -->
-    <button mat-button [matMenuTriggerFor]="menu">
-      Welcome, {{ user.displayName }}
-    </button>
-    <mat-menu #menu="matMenu">
-      <button
-        mat-menu-item
-        *ngIf="authService.loggedIn$ | async"
-        (click)="authService.logout()"
-      >
-        Logout
+      <button mat-button [matMenuTriggerFor]="menu">
+        Welcome, {{ user.displayName }}
       </button>
-    </mat-menu>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          *ngIf="authService.loggedIn$ | async"
+          (click)="authService.logout()"
+        >
+          Logout
+        </button>
+      </mat-menu>
+    </div>
   </div>
 </div>
 
