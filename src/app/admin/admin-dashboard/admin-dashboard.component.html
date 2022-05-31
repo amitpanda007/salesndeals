@@ -5,5 +5,7 @@
     *ngFor="let offer of adminOfferList"
     [offer]="offer"
     [options]="cardOptions"
+    (delete)="deleteOffer($event)"
+    (edit)="editOffer($event)"
   ></offer-card>
 </div>

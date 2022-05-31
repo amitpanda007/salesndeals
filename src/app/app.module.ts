@@ -17,9 +17,10 @@ import { OffersModule } from './offers/offers.module';
 import { AdminModule } from './admin/admin.module';
 import { CoreModule } from './core/core.module';
 import { MyAuthModule } from './auth/auth.module';
+import { DeleteConfirmationDialogComponent } from './common/delete.dialog.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DeleteConfirmationDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,6 +43,7 @@ import { MyAuthModule } from './auth/auth.module';
     AngularFireModule.initializeApp(environment.firebase),
     provideAuth(() => getAuth()),
   ],
+  entryComponents: [DeleteConfirmationDialogComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

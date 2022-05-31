@@ -1,8 +1,10 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -17,9 +19,12 @@ import { OfferPopUpDialogComponent } from '../offer-popup/offer-popup-dialog.com
   styleUrls: ['offer-card.component.scss'],
 })
 export class OfferCardComponent implements OnInit {
-  @Input() offer: Offer | null = null;
+  @Input() offer: Offer;
   @Input() options: any = {};
   @Input() bgImage: any;
+  @Output() delete: EventEmitter<Offer> = new EventEmitter();
+  @Output() edit: EventEmitter<Offer> = new EventEmitter();
+
   offerStartDate!: string;
   offerEndDate!: string;
   cardImage: string = '';
@@ -51,20 +56,30 @@ export class OfferCardComponent implements OnInit {
       this.cardImage = this.offer.backgroundImage;
     }
 
-    this.options.isVerified = this.offer?.isVerified;
+    this.options.isVerified = this.offer?.isVerified ? this.offer?.isVerified : false;
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.offer) {
       let newOffer = changes.offer.currentValue;
-      this.offerStartDate = new Date(newOffer.startDate).toLocaleDateString(
-        'en-US',
-        { month: 'long', day: 'numeric' }
-      );
-      this.offerEndDate = new Date(newOffer.startDate).toLocaleDateString(
-        'en-US',
-        { month: 'long', day: 'numeric' }
-      );
+      console.log(newOffer);
+      if (newOffer.startDate && newOffer.startDate.seconds) {
+        this.offerStartDate = new Date(
+          this.offer?.startDate.seconds * 1000
+        ).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+        this.offerEndDate = new Date(
+          this.offer?.endDate.seconds * 1000
+        ).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+      } else {
+        this.offerStartDate = new Date(newOffer.startDate).toLocaleDateString(
+          'en-US',
+          { month: 'long', day: 'numeric' }
+        );
+        this.offerEndDate = new Date(newOffer.endDate).toLocaleDateString(
+          'en-US',
+          { month: 'long', day: 'numeric' }
+        );
+      }
     }
 
     if (changes.bgImage) {
@@ -88,9 +103,11 @@ export class OfferCardComponent implements OnInit {
 
   editOffer() {
     console.log("Edit Offer");
+    this.edit.emit(this.offer);
   }
 
   deleteOffer() {
     console.log("Delete Offer");
+    this.delete.emit(this.offer);
   }
 }

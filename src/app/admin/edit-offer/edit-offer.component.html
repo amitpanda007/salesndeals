@@ -1,0 +1,79 @@
+<h2>Add An Offer</h2>
+
+<div class="offer-add-container" *ngIf="offer">
+  <div class="preview">
+    <offer-card
+      [offer]="offer"
+      [options]="offerCardOptions"
+      [bgImage]="offerBgImage"
+    ></offer-card>
+  </div>
+
+  <div class="form-container">
+    <form [formGroup]="offerForm" class="flex-column">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-hint>Name of the offer</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Offer Content</mat-label>
+        <textarea matInput formControlName="offerContent"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city" required />
+      </mat-form-field>
+      <div class="date-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Offer Start date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerStart"
+            formControlName="startDate"
+            required
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerStart"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerStart></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Offer End date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerEnd"
+            formControlName="endDate"
+            required
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerEnd"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerEnd></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="bg-img">
+      <mat-label>Background: </mat-label>
+      <input type="file" (change)="fileChanged($event)" accept=".png,.jpg" />
+    </div>
+  </div>
+  <div class="submit">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="updateOffer()"
+      [disabled]="!offerForm.valid"
+    >
+      Update
+    </button>
+  </div>
+</div>
