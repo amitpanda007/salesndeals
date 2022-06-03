@@ -5,8 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Offer } from 'src/app/models/offer';
 import { AdminOfferService } from 'src/app/core/services/admin.service';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'add-offer',
@@ -28,6 +30,10 @@ export class AddOfferComponent implements OnInit {
   offer!: Offer;
   offerCardOptions!: any;
   offerBgImage!: any;
+
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  cities: string[] = [];
 
   fileChanged(event: any) {
     console.log(event.target.files);
@@ -64,7 +70,7 @@ export class AddOfferComponent implements OnInit {
     this.nameControl = new FormControl('', Validators.required);
     this.descControl = new FormControl('');
     this.offerContentControl = new FormControl('');
-    this.cityControl = new FormControl('', Validators.required);
+    // this.cityControl = new FormControl('', Validators.required);
     this.startDateControl = new FormControl('', Validators.required);
     this.endDateControl = new FormControl('', Validators.required);
     // this.bgImageControl = new FormControl('');
@@ -73,14 +79,13 @@ export class AddOfferComponent implements OnInit {
       name: this.nameControl,
       description: this.descControl,
       offerContent: this.offerContentControl,
-      city: this.cityControl,
+      // city: this.cityControl,
       startDate: this.startDateControl,
       endDate: this.endDateControl,
       // backgroundImage: this.bgImageControl,
     });
 
     this.offerForm.valueChanges.subscribe((value: any) => {
-      // console.log(value);
       this.offer = value;
     });
   }
@@ -91,12 +96,13 @@ export class AddOfferComponent implements OnInit {
     } else {
       console.log('Form is InValid');
     }
-    // console.log(this.offerForm.value);
+    
     const newOffer: Offer = {
       name: this.offerForm.value.name,
       description: this.offerForm.value.description,
       offerContent: this.offerForm.value.offerContent,
-      city: [this.offerForm.value.city],
+      // city: [this.offerForm.value.city],
+      city: this.cities,
       startDate: this.offerForm.value.startDate,
       endDate: this.offerForm.value.endDate,
     };
@@ -104,5 +110,20 @@ export class AddOfferComponent implements OnInit {
     console.log(newOffer);
     console.log(this.fileToUpload);
     this.adminOfferService.addOffer(newOffer, this.fileToUpload);
+  }
+
+  addCity(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+    if (value) {
+      this.cities.push(value);
+    }
+    event.chipInput!.clear();
+  }
+
+  removeCity(city: string): void {
+    const index = this.cities.indexOf(city);
+    if (index >= 0) {
+      this.cities.splice(index, 1);
+    }
   }
 }

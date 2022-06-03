@@ -62,7 +62,7 @@ export class OfferCardComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.offer) {
       let newOffer = changes.offer.currentValue;
-      console.log(newOffer);
+      // console.log(newOffer);
       if (newOffer.startDate && newOffer.startDate.seconds) {
         this.offerStartDate = new Date(
           this.offer?.startDate.seconds * 1000
